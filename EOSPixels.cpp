@@ -294,7 +294,7 @@ void eospixels::withdraw(const account_name to) {
   auto quantity = asset(withdrawAmount, EOS_SYMBOL);
   action(permission_level{_self, N(active)}, N(eosio.token), N(transfer),
          std::make_tuple(_self, to, quantity,
-                         std::string("Withdraw from EOS Pixels")))
+                         std::string("Withdraw from PIXEL MASTER ON FIBOS")))
       .send();
 }
 
