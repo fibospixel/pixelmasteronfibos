@@ -49,7 +49,7 @@ struct pixel {
     //
     // Just to maintain sanity, we artificially limit the ceiling of a pixel
     // price to below 90 EOS.
-    eosio_assert(priceCounter <= 25, "price for pixel is too high");
+    eosio_assert(priceCounter <= 100, "price for pixel is too high");
 
     return currentPrice() * PRICE_MULTIPLIER;
   }
@@ -152,7 +152,13 @@ uint64_t calculateWithdrawalAndUpdate(const canvas &cnv, account &player,
   uint128_t withdrawnBonusScaled = patronBonus * PRECISION_BASE;
   uint128_t withdrawnBalanceScaled = balance * PRECISION_BASE;
 
-  player.balanceScaled -= withdrawnBalanceScaled;
+  // player.balanceScaled -= withdrawnBalanceScaled;
+  // Due to precision issues in PRECISION_BASE, withdrawnBalanceScaled  may cause overflow.
+  if (withdrawnBalanceScaled >= player.balanceScaled) {
+    player.balanceScaled = 0;
+  } else {
+    player.balanceScaled -= withdrawnBalanceScaled;
+  }
   player.maskScaled += withdrawnBonusScaled;
 
   return withdrawAmount;
