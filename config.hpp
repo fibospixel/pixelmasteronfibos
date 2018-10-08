@@ -13,13 +13,13 @@
 #define POT_PERCENTAGE_POINTS 25
 
 // number of pixels sold anything may be withdrawn
-#define WITHDRAW_PIXELS_THRESHOLD 150000
+#define WITHDRAW_PIXELS_THRESHOLD 30000
 
 #define REFERRER_PERCENTAGE_POINTS 8
 // TEAM_PERCENTAGE == 27
 #define PRECISION_BASE 1e16
 #define TEAM_ACCOUNT N(funoooooooo3)
 
-#define WITHDRAW_QUOTA 10000000  // 1000 EOS
+#define WITHDRAW_QUOTA 12000000000  // 1000 EOS
 
 #endif
